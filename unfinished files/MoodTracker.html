@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mood Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            font-family: 'Jura', sans-serif; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
+
+        .chart-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chart-container {
+            width: 80%; /* Adjust the width as needed */
+            text-align: center;
+            margin: 10px 0 30px; /* Adjust margin */
+        }
+
+        .add-entry-btn {
+            margin-top: 20px; /* Increased margin for centering below the image */
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-family: 'Jura', sans-serif;
+        }
+
+        .diary-container {
+            width: 50%;
+            text-align: center;
+            font-family: 'Jura', sans-serif;
+            margin: 5px 20px 40px;
+        }
+
+        .diary-entry {
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        .expand-btn {
+            margin-top: 10px;
+            padding: 5px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 100%; position: absolute; top: 0; text-align: center;">
+        <img src="https://i.imgur.com/eKZqpbf.png" alt="logo" style="height: 100px;">
+        <div class="title">Mood Tracker</div>
+    </div>
+
+    <div class="content">
+        <div class="chart-wrapper">
+            <div class="chart-container">
+                <div class="text-output">Your Chart</div>
+                <img src="https://via.placeholder.com/150" alt="Your Chart Placeholder">
+            </div>
+            <button class="add-entry-btn" onclick="addDiaryEntry()">Add Entry</button>
+        </div>
+        <div class="diary-container" id="diaryContainer">
+            <div class="text-output">Diary Entries</div>
+            <div class="diary-entry" id="entry1">
+                <p>Entry 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <button class="expand-btn" onclick="toggleVisibility('entry1')">Expand</button>
+            </div>
+            <!-- Add more diary entries similarly -->
+        </div>
+    </div>
+
+    <script>
+        function addDiaryEntry() {
+            // Dummy entry, replace with your logic to add actual entries
+            const entryId = 'entry' + Math.random();
+            const entry = document.createElement('div');
+            entry.classList.add('diary-entry');
+            entry.innerHTML = '<p>' + entryId + ': This is a new diary entry.</p><button class="expand-btn" onclick="toggleVisibility(\'' + entryId + '\')">Expand</button>';
+            document.getElementById('diaryContainer').appendChild(entry);
+        }
+    
+        function toggleVisibility(entryId) {
+            const entry = document.getElementById(entryId);
+            if (entry.style.display === 'none' || entry.style.display === '') {
+                entry.style.display = 'block';
+            } else {
+                entry.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
